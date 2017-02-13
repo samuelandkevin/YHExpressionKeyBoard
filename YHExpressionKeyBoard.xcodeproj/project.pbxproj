@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC4A140D1E514AC400CA7024 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A140C1E514AC400CA7024 /* main.m */; };
+		AC4A14101E514AC400CA7024 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A140F1E514AC400CA7024 /* AppDelegate.m */; };
+		AC4A14131E514AC400CA7024 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14121E514AC400CA7024 /* ViewController.m */; };
+		AC4A14161E514AC400CA7024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14141E514AC400CA7024 /* Main.storyboard */; };
+		AC4A14181E514AC400CA7024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14171E514AC400CA7024 /* Assets.xcassets */; };
+		AC4A141B1E514AC400CA7024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AC4A14081E514AC400CA7024 /* YHExpressionKeyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHExpressionKeyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4A140C1E514AC400CA7024 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC4A140E1E514AC400CA7024 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AC4A140F1E514AC400CA7024 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC4A14111E514AC400CA7024 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AC4A14121E514AC400CA7024 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AC4A14151E514AC400CA7024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC4A14171E514AC400CA7024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC4A141A1E514AC400CA7024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC4A141C1E514AC400CA7024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC4A14051E514AC400CA7024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC4A13FF1E514AC400CA7024 = {
+			isa = PBXGroup;
+			children = (
+				AC4A140A1E514AC400CA7024 /* YHExpressionKeyBoard */,
+				AC4A14091E514AC400CA7024 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC4A14091E514AC400CA7024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC4A14081E514AC400CA7024 /* YHExpressionKeyBoard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC4A140A1E514AC400CA7024 /* YHExpressionKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				AC4A140E1E514AC400CA7024 /* AppDelegate.h */,
+				AC4A140F1E514AC400CA7024 /* AppDelegate.m */,
+				AC4A14111E514AC400CA7024 /* ViewController.h */,
+				AC4A14121E514AC400CA7024 /* ViewController.m */,
+				AC4A14141E514AC400CA7024 /* Main.storyboard */,
+				AC4A14171E514AC400CA7024 /* Assets.xcassets */,
+				AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */,
+				AC4A141C1E514AC400CA7024 /* Info.plist */,
+				AC4A140B1E514AC400CA7024 /* Supporting Files */,
+			);
+			path = YHExpressionKeyBoard;
+			sourceTree = "<group>";
+		};
+		AC4A140B1E514AC400CA7024 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC4A140C1E514AC400CA7024 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC4A14071E514AC400CA7024 /* YHExpressionKeyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC4A141F1E514AC400CA7024 /* Build configuration list for PBXNativeTarget "YHExpressionKeyBoard" */;
+			buildPhases = (
+				AC4A14041E514AC400CA7024 /* Sources */,
+				AC4A14051E514AC400CA7024 /* Frameworks */,
+				AC4A14061E514AC400CA7024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YHExpressionKeyBoard;
+			productName = YHExpressionKeyBoard;
+			productReference = AC4A14081E514AC400CA7024 /* YHExpressionKeyBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC4A14001E514AC400CA7024 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = YHSoft;
+				TargetAttributes = {
+					AC4A14071E514AC400CA7024 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AC4A14031E514AC400CA7024 /* Build configuration list for PBXProject "YHExpressionKeyBoard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC4A13FF1E514AC400CA7024;
+			productRefGroup = AC4A14091E514AC400CA7024 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC4A14071E514AC400CA7024 /* YHExpressionKeyBoard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC4A14061E514AC400CA7024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC4A141B1E514AC400CA7024 /* LaunchScreen.storyboard in Resources */,
+				AC4A14181E514AC400CA7024 /* Assets.xcassets in Resources */,
+				AC4A14161E514AC400CA7024 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC4A14041E514AC400CA7024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC4A14131E514AC400CA7024 /* ViewController.m in Sources */,
+				AC4A14101E514AC400CA7024 /* AppDelegate.m in Sources */,
+				AC4A140D1E514AC400CA7024 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AC4A14141E514AC400CA7024 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC4A14151E514AC400CA7024 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC4A141A1E514AC400CA7024 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC4A141D1E514AC400CA7024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC4A141E1E514AC400CA7024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC4A14201E514AC400CA7024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC4A14211E514AC400CA7024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC4A14031E514AC400CA7024 /* Build configuration list for PBXProject "YHExpressionKeyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC4A141D1E514AC400CA7024 /* Debug */,
+				AC4A141E1E514AC400CA7024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC4A141F1E514AC400CA7024 /* Build configuration list for PBXNativeTarget "YHExpressionKeyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC4A14201E514AC400CA7024 /* Debug */,
+				AC4A14211E514AC400CA7024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC4A14001E514AC400CA7024 /* Project object */;
+}
