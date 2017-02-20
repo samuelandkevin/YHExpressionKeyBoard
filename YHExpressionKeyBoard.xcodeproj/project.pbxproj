@@ -329,6 +329,7 @@
 		AC4A17181E51B46100CA7024 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		AC4A17191E51B46100CA7024 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		AC4A171A1E51B46100CA7024 /* YYKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKit.h; sourceTree = "<group>"; };
+		AC61F83B1E5ABFFC00AF48B5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +369,7 @@
 				AC4A140F1E514AC400CA7024 /* AppDelegate.m */,
 				AC4A14111E514AC400CA7024 /* ViewController.h */,
 				AC4A14121E514AC400CA7024 /* ViewController.m */,
+				AC61F83B1E5ABFFC00AF48B5 /* PrefixHeader.pch */,
 				AC4A14221E514AFA00CA7024 /* Expression */,
 				AC4A142E1E514AFA00CA7024 /* Resource */,
 				AC4A14311E514AFA00CA7024 /* Vendors */,
@@ -1038,6 +1040,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = YHExpressionKeyBoard/PrefixHeader.pch;
 				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
@@ -1049,6 +1052,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = YHExpressionKeyBoard/PrefixHeader.pch;
 				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
@@ -1075,6 +1079,7 @@
 				AC4A14211E514AC400CA7024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

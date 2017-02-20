@@ -11,6 +11,8 @@
 @class YHExpressionKeyboard;
 @protocol YHExpressionKeyboardDelegate <NSObject>
 
+//点击发送
+- (void)sendBtnDidTap:(NSString *)text;
 
 @optional
 //根据键盘是否弹起，设置tableView frame

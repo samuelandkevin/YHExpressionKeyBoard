@@ -79,13 +79,13 @@
             
             
         }];
-        NSLog(@"要删除表情是：\n%@",emoticon);
+        DDLog(@"要删除表情是：\n%@",emoticon);
         if (emoticon) {
             //是表情符号,移除
             if ([self.emoticonArray containsObject:emoticon]) {
                 
                 self.text = [self.text stringByReplacingCharactersInRange:emoticonRange withString:@" "];
-                NSLog(@"删除后字符串为:\n%@",self.text);
+                DDLog(@"删除后字符串为:\n%@",self.text);
                 
                 range.location -= emoticonRange.length;
                 range.length = 1;
@@ -173,7 +173,7 @@
         [self.superView addSubview:self];
         
         //表情键盘在父视图的位置
-        __weak typeof(self) weakSelf = self;
+        WeakSelf
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             
             make.bottom.equalTo(weakSelf.superView).offset(kBotContainerH);
@@ -208,7 +208,7 @@
 
 
 - (void)_layoutUI{
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [_topToolBar setContentHuggingPriority:249 forAxis:UILayoutConstraintAxisVertical];
     [_topToolBar setContentCompressionResistancePriority:749 forAxis:UILayoutConstraintAxisVertical];
     
@@ -461,7 +461,7 @@
         }];
         _height_Toolbar = toolbarH;
     }
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [UIView animateWithDuration:DURTAION animations:^{
         [weakSelf.superView layoutIfNeeded];
     }];
@@ -473,15 +473,12 @@
 
 #pragma mark - @protocol YHExpressionInputViewDelegate
 - (void)emoticonInputDidTapText:(NSString *)text{
-
-    
     if (text.length) {
         //设置表情符号
         _textView.emoticon = text;
         [self _textViewChangeText];
     }
    
-    
 }
 
 - (void)emoticonInputDidTapBackspace{
@@ -489,8 +486,17 @@
     [_textView deleteEmoticon];
     [self _textViewChangeText];
     
+}
+
+- (void)sendBtnDidTap{
+    DDLog(@"点击发送,发送文本是：\n%@",_textView.text);
+    if (_delegate && [_delegate respondsToSelector:@selector(sendBtnDidTap:)]) {
+        [_delegate sendBtnDidTap:_textView.text];
+    }
     
-    
+    //清空输入内容
+    self.textView.text = @"";
+    [self _textViewChangeText];
 }
 
 #pragma mark - @protocol YHExpressionAddViewDelegate
@@ -625,7 +631,7 @@
  只显示toolBar
  */
 - (void)_onlyShowToolbar{
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer).offset(kBotContainerH);
@@ -649,7 +655,7 @@
  显示按住说话
  */
 - (void)_showPressToSpeakButton{
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [self.topToolBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(kTopToolbarH);
     }];
@@ -664,7 +670,7 @@
  隐藏按住说话
  */
 - (void)_hiddenPressToSpeakButton{
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [self.topToolBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(_height_Toolbar);
     }];
@@ -681,7 +687,7 @@
  */
 - (void)_showExpressionKeyboard{
     //表情键盘上移，addView下移
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer);
     }];
@@ -703,7 +709,7 @@
  */
 - (void)_showAddView{
     //表情键盘下移，addView上移
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer).offset(kBotContainerH);
     }];
@@ -750,7 +756,7 @@
 
 - (void)keyBoardShow:(NSNotification*)noti{
     //显示键盘
-    __weak typeof(self) weakSelf = self;
+    WeakSelf
     CGRect endF = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
     if (!_toolbarButtonTap) {
     

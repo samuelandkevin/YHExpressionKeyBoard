@@ -9,7 +9,6 @@
 #import "YHExpressionInputView.h"
 #import "YHExpressionHelper.h"
 #import "YHModel.h"
-#import "YYKit.h"
 
 #define kViewHeight 216
 #define kToolbarHeight 37
@@ -243,6 +242,9 @@
 
 @interface YHExpressionInputView () <UICollectionViewDelegate, UICollectionViewDataSource, UIInputViewAudioFeedback,YHEmoticonScrollViewDelegate>
 
+
+@property (nonatomic, strong) UIView *viewTopline;
+@property (nonatomic, strong) UIView *viewBotToolBar;
 @property (nonatomic, strong) NSArray<UIButton *> *toolbarButtons;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIView *pageControl;
@@ -270,13 +272,12 @@
 - (instancetype)init {
     self = [super init];
    
-    self.frame = CGRectMake(0, 0, kScreenWidth, kViewHeight);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, kViewHeight);
     self.backgroundColor = UIColorHex(f9f9f9);
     [self _initGroups];
     
-    [self _initTopLine];
-    [self _initCollectionView];
-    [self _initBottomToolbar];
+    [self _initUI];
+    
     
     _currentPageIndex = NSNotFound;
     [self _toolbarBtnDidTapped:_toolbarButtons.firstObject];
@@ -284,6 +285,11 @@
     return self;
 }
 
+- (void)_initUI{
+    [self _initTopLine];
+    [self _initCollectionView];
+    [self _initBottomToolbar];
+}
 
 
 - (void)_initGroups {
@@ -313,20 +319,21 @@
 }
 
 - (void)_initTopLine {
-    UIView *line = [UIView new];
-    line.width = self.width;
-    line.height = CGFloatFromPixel(1);
-    line.backgroundColor = UIColorHex(bfbfbf);
-    line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self addSubview:line];
+    _viewTopline = [UIView new];
+    _viewTopline.width = self.width;
+    _viewTopline.height = 1/[UIScreen mainScreen].scale;
+    _viewTopline.backgroundColor = UIColorHex(bfbfbf);
+    _viewTopline.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self addSubview:_viewTopline];
+    
 }
 
 - (void)_initCollectionView {
-    CGFloat itemWidth = (kScreenWidth - 10 * 2) / 7.0;
+    CGFloat itemWidth = (SCREEN_WIDTH - 10 * 2) / 7.0;
     itemWidth = CGFloatPixelRound(itemWidth);
-    CGFloat padding = (kScreenWidth - 7 * itemWidth) / 2.0;
-    CGFloat paddingLeft = CGFloatPixelRound(padding);
-    CGFloat paddingRight = kScreenWidth - paddingLeft - itemWidth * 7;
+    CGFloat padding = (SCREEN_WIDTH - 7 * itemWidth) / 2.0;
+    CGFloat paddingLeft  = CGFloatPixelRound(padding);
+    CGFloat paddingRight = SCREEN_WIDTH - paddingLeft - itemWidth * 7;
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -335,7 +342,7 @@
     layout.minimumInteritemSpacing = 0;
     layout.sectionInset = UIEdgeInsetsMake(0, paddingLeft, 0, paddingRight);
     
-    _collectionView = [[YHEmoticonScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kOneEmoticonHeight * 3) collectionViewLayout:layout];
+    _collectionView = [[YHEmoticonScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kOneEmoticonHeight * 3) collectionViewLayout:layout];
    
     [_collectionView registerClass:[YHEmoticonCell class] forCellWithReuseIdentifier:@"cell"];
     _collectionView.delegate = self;
@@ -344,7 +351,7 @@
     [self addSubview:_collectionView];
     
     _pageControl = [UIView new];
-    _pageControl.size = CGSizeMake(kScreenWidth, 20);
+    _pageControl.size = CGSizeMake(SCREEN_WIDTH, 20);
     _pageControl.top = _collectionView.bottom - 5;
     _pageControl.userInteractionEnabled = NO;
     [self addSubview:_pageControl];
@@ -352,19 +359,33 @@
 
 
 - (void)_initBottomToolbar {
-    UIView *toolbar = [UIView new];
-    toolbar.size = CGSizeMake(kScreenWidth, kToolbarHeight);
+    _viewBotToolBar = [UIView new];
+    _viewBotToolBar.size = CGSizeMake(SCREEN_WIDTH, kToolbarHeight);
     
     UIImageView *bg = [[UIImageView alloc] initWithImage:[YHExpressionHelper imageNamed:@"compose_emotion_table_right_normal"]];
-    bg.size = toolbar.size;
-    [toolbar addSubview:bg];
+    bg.size = _viewBotToolBar.size;
+    [_viewBotToolBar addSubview:bg];
+    
+    
+    CGFloat btnSendWidth = 50;
     
     UIScrollView *scroll = [UIScrollView new];
     scroll.showsHorizontalScrollIndicator = NO;
     scroll.alwaysBounceHorizontal = YES;
-    scroll.size = toolbar.size;
-    scroll.contentSize = toolbar.size;
-    [toolbar addSubview:scroll];
+    CGSize size = CGSizeMake(SCREEN_WIDTH-btnSendWidth, _viewBotToolBar.size.height);
+    scroll.size = size;
+    scroll.contentSize = size;
+    [_viewBotToolBar addSubview:scroll];
+    
+    
+    UIButton *btnSend = [UIButton new];
+    btnSend.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [btnSend setTitle:@"发送" forState:UIControlStateNormal];
+    [btnSend addTarget:self action:@selector(onBtnSend:) forControlEvents:UIControlEventTouchUpInside];
+    btnSend.left = SCREEN_WIDTH - btnSendWidth;
+    btnSend.size  = CGSizeMake(btnSendWidth, _viewBotToolBar.height);
+    btnSend.backgroundColor = kGreenColor;
+    [_viewBotToolBar addSubview:btnSend];
     
     NSMutableArray *btns = [NSMutableArray new];
     UIButton *btn;
@@ -372,21 +393,22 @@
         YHEmoticonGroup *group = _emoticonGroups[i];
         btn = [self _createToolbarButton];
         [btn setTitle:group.nameCN forState:UIControlStateNormal];
-        btn.left = kScreenWidth / (float)_emoticonGroups.count * i;
+        btn.left = (SCREEN_WIDTH-btnSendWidth) / (float)_emoticonGroups.count * i;
         btn.tag = i;
         [scroll addSubview:btn];
         [btns addObject:btn];
     }
  
-    toolbar.bottom = self.height;
-    [self addSubview:toolbar];
+    _viewBotToolBar.bottom = self.height;
+    [self addSubview:_viewBotToolBar];
     _toolbarButtons = btns;
 }
 
 - (UIButton *)_createToolbarButton {
+    CGFloat btnSendBtnWidth = 50;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.exclusiveTouch = YES;
-    btn.size = CGSizeMake(kScreenWidth / _emoticonGroups.count, kToolbarHeight);
+    btn.size = CGSizeMake((SCREEN_WIDTH - btnSendBtnWidth) / _emoticonGroups.count, kToolbarHeight);
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitleColor:UIColorHex(5D5C5A) forState:UIControlStateSelected];
@@ -411,6 +433,17 @@
     CGRect rect = CGRectMake(page * _collectionView.width, 0, _collectionView.width, _collectionView.height);
     [_collectionView scrollRectToVisible:rect animated:NO];
     [self scrollViewDidScroll:_collectionView];
+}
+
+
+#pragma mark - Action
+
+- (void)onBtnSend:(UIButton *)sender{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(sendBtnDidTap)]) {
+        [_delegate sendBtnDidTap];
+    }
+    
 }
 
 
@@ -479,6 +512,7 @@
         btn.selected = (idx == curGroupIndex);
     }];
 }
+
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     return NO;

@@ -10,6 +10,9 @@
 
 @protocol YHExpressionInputViewDelegate <NSObject>
 
+//点击发送按钮
+- (void)sendBtnDidTap;
+
 @optional
 - (void)emoticonInputDidTapText:(NSString *)text;
 - (void)emoticonInputDidTapBackspace;
