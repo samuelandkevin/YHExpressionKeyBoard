@@ -1,12 +1,12 @@
 # YHExpressionKeyBoard
 仿微信表情键盘
 ## 效果图
-[img](http://)
+[iOS-仿微信表情键盘的实现YHExpressionKeyBoard(基于Masonry和YYKit)](http://blog.csdn.net/samuelandkevin/article/details/55101724)
 ## 初始化方式 
 //表情键盘 <br>
  在控制器中 <br>
- YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self];<br>
- [self.view addSubview:v]<br>
+ YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self aboveView:scrV];<br>
+
  ## 表情键盘代理 <br>
 #pragma mark - @protocol YHExpressionKeyboardDelegate <br>
 // - (void)didSelectExtraItem:(NSString *)itemName{ <br>
