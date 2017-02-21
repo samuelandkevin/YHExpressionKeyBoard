@@ -271,7 +271,7 @@
 
 - (instancetype)init {
     self = [super init];
-   
+    
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, kViewHeight);
     self.backgroundColor = UIColorHex(f9f9f9);
     [self _initGroups];
@@ -343,7 +343,7 @@
     layout.sectionInset = UIEdgeInsetsMake(0, paddingLeft, 0, paddingRight);
     
     _collectionView = [[YHEmoticonScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kOneEmoticonHeight * 3) collectionViewLayout:layout];
-   
+    
     [_collectionView registerClass:[YHEmoticonCell class] forCellWithReuseIdentifier:@"cell"];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -398,7 +398,7 @@
         [scroll addSubview:btn];
         [btns addObject:btn];
     }
- 
+    
     _viewBotToolBar.bottom = self.height;
     [self addSubview:_viewBotToolBar];
     _toolbarButtons = btns;

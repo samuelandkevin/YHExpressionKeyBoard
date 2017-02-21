@@ -13,7 +13,7 @@
 #import "YHExpressionInputView.h"
 #import "YHExpressionAddView.h"
 
-
+#define kNaviBarH       64   //导航栏高度
 #define kTopToolbarH    46   //顶部工具栏高度
 #define kToolbarBtnH    35   //顶部工具栏的按钮高度
 #define kBotContainerH  216  //底部表情高度
@@ -49,10 +49,6 @@
     }
     self.text = maStr;
 }
-
-//- (BOOL)subStringIsEmotion{
-//    
-//}
 
 
 - (void)deleteEmoticon{
@@ -90,7 +86,7 @@
                 range.location -= emoticonRange.length;
                 range.length = 1;
                 self.selectedRange = range;
-               
+                
             }
         }else{
             self.text = [self.text stringByReplacingCharactersInRange:range withString:@""];
@@ -123,6 +119,7 @@
 //表情键盘被添加到的VC 和 父视图
 @property (nonatomic, weak) UIViewController *viewController;
 @property (nonatomic, weak) UIView  *superView;
+@property (nonatomic, weak) UIView  *aboveView;
 
 //TopToolBar
 @property (nonatomic, strong) UIView *topToolBar;
@@ -146,12 +143,12 @@
 
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -164,7 +161,7 @@
 }
 
 #pragma mark - Public
-- (instancetype)initWithViewController:(UIViewController <YHExpressionKeyboardDelegate>*)viewController{
+- (instancetype)initWithViewController:( UIViewController <YHExpressionKeyboardDelegate>*)viewController aboveView:(UIView *)aboveView{
     if (self = [super init]) {
         //保存VC和父视图
         self.viewController = viewController;
@@ -172,8 +169,24 @@
         self.superView = self.viewController.view;
         [self.superView addSubview:self];
         
-        //表情键盘在父视图的位置
+        //在viewController中,表情键盘上方的视图(aboveView)
         WeakSelf
+        if(aboveView){
+            _aboveView = aboveView;
+            if (![self.superView.subviews containsObject:_aboveView]) {
+                [self.superView addSubview:_aboveView];
+            }
+            
+            [_aboveView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(weakSelf.topToolBar.mas_top);
+                make.left.right.equalTo(weakSelf.superView);
+                make.height.mas_equalTo(SCREEN_HEIGHT-kTopToolbarH-kNaviBarH);
+            }];
+            
+        }
+        
+        
+        //在viewController中,表情键盘在父视图的位置
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             
             make.bottom.equalTo(weakSelf.superView).offset(kBotContainerH);
@@ -185,8 +198,9 @@
     return self;
 }
 
+//结束编辑
 - (void)endEditing{
-
+    
     _toolbarButtonTap = NO;
     if (![_textView isFirstResponder]) {
         [self _onlyShowToolbar];
@@ -309,7 +323,7 @@
     
     //按住说话 (默认是隐藏的)
     [self _initToolbarPresstoSpeakButton];
-
+    
     //表情按钮
     _toolbarEmoticonButton = [self _creatToolbarButton];
     [self _setupBtnImage:_toolbarEmoticonButton];
@@ -351,7 +365,7 @@
     _toolbarPresstoSpeakButton.exclusiveTouch = YES;
     
     [_toolbarPresstoSpeakButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
+    
     [_toolbarPresstoSpeakButton setTitle:@"按住 说话" forState:UIControlStateNormal];
     [_toolbarPresstoSpeakButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
     
@@ -403,12 +417,28 @@
 }
 
 
+- (void)_aboveViewScollToBottom{
+    if (_aboveView && [_aboveView isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scr = (UIScrollView *) _aboveView;
+        [self _scrollToBottom:scr];
+        
+    }
+}
+
+- (void)_scrollToBottom:(UIScrollView *)scrollView{
+    CGPoint off = scrollView.contentOffset;
+    off.y = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom;
+    [scrollView setContentOffset:off animated:YES];
+}
+
+
 #pragma mark - UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     for (UIButton *b in _toolbarButtonArr) {
         b.selected = NO;
         [self _setupBtnImage:b];
     }
+    [self _aboveViewScollToBottom];
     return YES;
 }
 
@@ -427,7 +457,7 @@
     
     [self _textViewChangeText];
     
-
+    
 }
 
 -(void)_textViewChangeText{
@@ -467,7 +497,7 @@
     }];
     
     [_textView scrollRangeToVisible:NSMakeRange(self.textView.text.length, 1)];
-
+    
     
 }
 
@@ -478,11 +508,11 @@
         _textView.emoticon = text;
         [self _textViewChangeText];
     }
-   
+    
 }
 
 - (void)emoticonInputDidTapBackspace{
-
+    
     [_textView deleteEmoticon];
     [self _textViewChangeText];
     
@@ -514,7 +544,7 @@
  */
 - (void)_setupBtnImage:(UIButton *)btn{
     
-
+    
     if(btn == _toolbarVioceButton){
         if (!btn.selected) {
             [btn setImage:[YHExpressionHelper imageNamed:@"compose_toolbar_voice"] forState:UIControlStateNormal];
@@ -524,7 +554,7 @@
             [btn setImage:[YHExpressionHelper imageNamed:@"compose_keyboardbutton_background_highlighted"] forState:UIControlStateHighlighted];
             
         }
-
+        
     }else if (btn == _toolbarEmoticonButton) {
         if (!btn.selected) {
             [btn setImage:[YHExpressionHelper imageNamed:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
@@ -539,14 +569,14 @@
             [btn setImage:[YHExpressionHelper imageNamed:@"message_add_background"] forState:UIControlStateNormal];
             [btn setImage:[YHExpressionHelper imageNamed:@"message_add_background_highlighted"] forState:UIControlStateHighlighted];
         }
-       
+        
     }
     
 }
 
 
 /**
-  点击toolBarButton
+ 点击toolBarButton
  */
 - (void)_onToolbarBtn:(UIButton *)button {
     
@@ -567,9 +597,15 @@
     [self _setupBtnImage:button];
     
     
+    //隐藏按住说话按钮
     if (button.selected && button != _toolbarVioceButton) {
         
         [self _hiddenPressToSpeakButton];
+    }
+    
+    //aboveView滚到底部
+    if(button != _toolbarVioceButton){
+        [self _aboveViewScollToBottom];
     }
     
     
@@ -578,7 +614,7 @@
             if([_textView isFirstResponder]){
                 [_textView resignFirstResponder];
             }else{
-    
+                
                 [self _onlyShowToolbar];
             }
             
@@ -596,7 +632,7 @@
         if (!button.selected) {
             //显示键盘
             [_textView becomeFirstResponder];
-
+            
         }else{
             
             //显示表情
@@ -605,7 +641,7 @@
             }else{
                 [_textView resignFirstResponder];
             }
-
+            
             
         }
         
@@ -621,7 +657,7 @@
             }else{
                 [_textView resignFirstResponder];
             }
-
+            
         }
     }
 }
@@ -700,7 +736,7 @@
     [UIView animateWithDuration:DURTAION animations:^{
         [weakSelf.superView layoutIfNeeded];
     }];
-
+    
 }
 
 
@@ -735,13 +771,13 @@
 - (void)keyBoardHidden:(NSNotification*)noti{
     
     //隐藏键盘
-
+    
     if (!_toolbarButtonTap) {
-
+        
         
         [self _onlyShowToolbar];
         
-    
+        
     }else{
         _toolbarButtonTap = NO;
         
@@ -759,7 +795,7 @@
     WeakSelf
     CGRect endF = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
     if (!_toolbarButtonTap) {
-    
+        
         NSTimeInterval duration = [[noti.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
         CGFloat diffH = endF.size.height - kBotContainerH;//高度差
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -771,15 +807,15 @@
         
     }else{
         _toolbarButtonTap = NO;
-
+        
         CGFloat diffH = endF.size.height - kBotContainerH;//高度差
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(weakSelf.superView).offset(-diffH);
-           
+            
         }];
-       
+        
     }
-
+    
 }
 
 

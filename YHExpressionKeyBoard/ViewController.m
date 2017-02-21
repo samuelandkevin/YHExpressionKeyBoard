@@ -31,7 +31,7 @@
     [self.view addSubview:scrV];
     
     //表情键盘
-    YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self];
+    YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self aboveView:scrV];
     _v = v;
     [self.view addSubview:v];
     
@@ -61,7 +61,7 @@
 }
 
 #pragma mark - @protocol UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [_v endEditing];
 }
 
