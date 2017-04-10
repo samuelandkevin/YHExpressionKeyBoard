@@ -14,7 +14,7 @@ align=center /></br>
 
  ## 表情键盘代理 
 <br>
- ## pragma mark - @protocol YHExpressionKeyboardDelegate 
+ ### pragma mark - @protocol YHExpressionKeyboardDelegate <br>
 ```
   -(void)didSelectExtraItem:(NSString *)itemName{ 
      //在这处理点击某个item的事件<br>
