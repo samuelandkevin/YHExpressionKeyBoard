@@ -11,11 +11,11 @@ align=center /></br>
 ```
  YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self aboveView:scrV];
 ```
-<p>
+
  ## 表情键盘代理 
-</p>
-</br>
+<br>
  ## pragma mark - @protocol YHExpressionKeyboardDelegate 
+ <br>
  ```
  - (void)didSelectExtraItem:(NSString *)itemName{ 
     //在这处理点击某个item的事件<br>
