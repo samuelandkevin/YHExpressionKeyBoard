@@ -21,15 +21,9 @@ align=center /></br>
 ```
  
 <br>
-表情键盘主要是用了UICollectionView实现，如果实现UICollectionView表情横排横滚动，可以参考我的另外一篇文章：<br>
-[iOS- UICollectionView实现表情数据横排横滚动]: http://blog.csdn.net/samuelandkevin/article/details/54963719 <br>
+表情键盘主要是用了UICollectionView实现，如果实现UICollectionView表情横排横滚动，可以参考我的另外一篇文章：
+[iOS- UICollectionView实现表情数据横排横滚动](http://blog.csdn.net/samuelandkevin/article/details/54963719)
 输入框最多显示4行，框高的变化动画是Masonry的约束动画实现。
 ## 实际应用DEMO
-关于实际应用,可以参考我的另一个即时通讯DEMO: [YHChat]: https://github.com/samuelandkevin/YHChat <br>
+关于实际应用,可以参考我的另一个即时通讯DEMO: [YHChat](https://github.com/samuelandkevin/YHChat)
 <p>你的支持，我的动力！</p>
-I get 10 times more traffic from [Google][] than from
-[Yahoo][] or [MSN][].
-
-  [google]: http://google.com/        "Google"
-  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
-  [msn]:    http://search.msn.com/    "MSN Search"
