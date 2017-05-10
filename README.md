@@ -23,7 +23,7 @@ align=center /></br>
 <br>
 表情键盘主要是用了UICollectionView实现，如果实现UICollectionView表情横排横滚动，可以参考我的另外一篇文章：</br>
 [iOS- UICollectionView实现表情数据横排横滚动](http://blog.csdn.net/samuelandkevin/article/details/54963719)
-输入框最多显示4行，框高的变化动画是Masonry的约束动画实现。
+<p>输入框最多显示4行，框高的变化动画是Masonry的约束动画实现。</p>
 
 ## 实际应用DEMO
 关于实际应用,可以参考我的另一个即时通讯DEMO:</br>
