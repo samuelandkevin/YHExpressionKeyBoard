@@ -23,5 +23,5 @@
 @interface YHExpressionInputView : UIView
 @property (nonatomic, weak) id<YHExpressionInputViewDelegate> delegate;
 @property (nonatomic, strong) UITextView *textView;
-+ (instancetype)sharedView;
+
 @end

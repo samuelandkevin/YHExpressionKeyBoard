@@ -23,6 +23,6 @@
 @interface YHExpressionAddView : UIView
 
 @property (nonatomic,weak)id<YHExpressionAddViewDelegate>delegate;
-+ (instancetype)sharedView;
+
 
 @end

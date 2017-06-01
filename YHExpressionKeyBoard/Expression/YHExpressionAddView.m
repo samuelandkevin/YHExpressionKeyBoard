@@ -85,18 +85,9 @@
 @implementation YHExpressionAddView
 
 
-+ (instancetype)sharedView {
-    static YHExpressionAddView *v;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        v = [self new];
-    });
-    return v;
-}
-
 - (instancetype)init {
     self = [super init];
-    
+
     self.backgroundColor = UIColorHex(f9f9f9);
     self.dataArray = [YHExpressionHelper extraModels];
     

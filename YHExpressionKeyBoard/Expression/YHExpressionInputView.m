@@ -260,14 +260,6 @@
 
 @implementation YHExpressionInputView
 
-+ (instancetype)sharedView {
-    static YHExpressionInputView *v;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        v = [self new];
-    });
-    return v;
-}
 
 - (instancetype)init {
     self = [super init];

@@ -217,6 +217,7 @@
 }
 
 - (void)dealloc{
+    DDLog(@"%s",__func__);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -404,13 +405,13 @@
     [self addSubview:_botContainer];
     
     //表情
-    YHExpressionInputView *inputV =[YHExpressionInputView sharedView];
+    YHExpressionInputView *inputV = [[YHExpressionInputView alloc] init];
     inputV.delegate = self;
     [_botContainer addSubview:inputV];
     _inputV = inputV;
     
     //"+"视图内容
-    YHExpressionAddView *addView = [YHExpressionAddView sharedView];
+    YHExpressionAddView *addView = [[YHExpressionAddView alloc] init];
     addView.delegate = self;
     [_botContainer addSubview:addView];
     _addView = addView;

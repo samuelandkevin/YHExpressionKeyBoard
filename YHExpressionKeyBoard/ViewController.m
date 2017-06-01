@@ -58,6 +58,25 @@
     
     //设置返回按钮的颜色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    
+    //右barButtonItem
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [btn setTitle:@">" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(onRight:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = rightItem;
+}
+
+#pragma mark - Life
+- (void)dealloc{
+    DDLog(@"%s",__func__);
+}
+
+#pragma mark - Action
+- (void)onRight:(UIButton*)sender{
+    ViewController *vc = [ViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - @protocol UIScrollViewDelegate
