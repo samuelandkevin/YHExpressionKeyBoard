@@ -1,23 +1,31 @@
+
 # YHExpressionKeyBoard
 仿微信表情键盘
 ## 效果图
-<img src="http://img.blog.csdn.net/20170214170540043?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2FtdWVsYW5ka2V2aW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width = "320" height = "568" alt="pic5" 
-align=center /> <img src="http://img.blog.csdn.net/20170401084424393?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2FtdWVsYW5ka2V2aW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" width = "320" height = "568" alt="pic5" 
-align=center /></br>
+<img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic1.png" width="40%" alt="还在路上，稍等..."/>
+<img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic2.png" width="40%" alt="还在路上，稍等..."/>
+<img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic3.png" width="40%" alt="还在路上，稍等..."/>
 
 
-## 初始化方式 
-//表情键盘 <br>
+## 表情键盘初始化方式 
 ```
  YHExpressionKeyboard *v = [[YHExpressionKeyboard alloc] initWithViewController:self aboveView:scrV];
 ```
 
- ## 表情键盘代理 
-#pragma mark - @protocol YHExpressionKeyboardDelegate <br>
+ ## 表情键盘代理 YHExpressionKeyboardDelegate 
+ //点击某个item的事件
 ```
  -(void)didSelectExtraItem:(NSString *)itemName{ 
-     //在这处理点击某个item的事件
+
  }
+```
+
+//收起键盘
+```
+/**
+ 键盘上方视图内容滚动到键盘顶部(Note: 键盘上方视图是scrollView才有效)
+ */
+- (void)aboveViewScollToBottom;
 ```
  
 <br>
