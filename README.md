@@ -2,7 +2,7 @@
 # YHExpressionKeyBoard
 仿微信表情键盘
 ## 效果图
-<img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic1.png" width="30%" alt="还在路上，稍等..."/><img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic2.png" width="30%" alt="还在路上，稍等..."/><img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic3.png" width="30%" alt="还在路上，稍等..."/>
+<img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic1.png" width="30%" alt="还在路上，稍等..."/> <img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic2.png" width="30%" alt="还在路上，稍等..."/> <img src="https://github.com/samuelandkevin/YHExpressionKeyBoard/blob/master/Pics/pic3.png" width="30%" alt="还在路上，稍等..."/>
 
 
 ## 表情键盘初始化方式 
