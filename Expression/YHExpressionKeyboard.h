@@ -12,8 +12,15 @@
 @class YHExpressionKeyboard;
 @protocol YHExpressionKeyboardDelegate <NSObject>
 
+@required
 //点击发送
-- (void)sendBtnDidTap:(NSString *)text;
+- (void)didTapSendBtn:(NSString *)text;
+
+//录音相关
+- (void)didStartRecordingVoice;
+- (void)didStopRecordingVoice;
+- (void)didCancelRecordingVoice;
+- (void)didDragInside:(BOOL)inside;
 
 @optional
 //根据键盘是否弹起，设置tableView frame
@@ -46,4 +53,9 @@
  */
 - (void)endEditing;
 
+
+/**
+ 键盘上方视图内容滚动到键盘顶部(Note: 键盘上方视图是scrollView才有效)
+ */
+- (void)aboveViewScollToBottom;
 @end

@@ -14,7 +14,7 @@
 #import "YHExpressionAddView.h"
 
 #define kNaviBarH       64   //导航栏高度
-#define kTopToolbarH    46   //顶部工具栏高度
+#define kTopToolbarH    50   //顶部工具栏高度
 #define kToolbarBtnH    35   //顶部工具栏的按钮高度
 #define kBotContainerH  216  //底部表情高度
 #define DURTAION  0.25f      //键盘显示/收起动画时间
@@ -107,13 +107,27 @@
 
 @end
 
+//键盘状态
+typedef NS_ENUM(int,YHKeyBoardStatus){
+    YHKeyBoardStatus_OnlyTopToolBar = 0,//只显示顶部工具栏
+    YHKeyBoardStatus_PhysicalKeyB,      //物理键盘
+    YHKeyBoardStatus_ExpressionKeyB,    //表情键盘
+    YHKeyBoardStatus_Other              //其他
+};
+
 
 @interface YHExpressionKeyboard()<YYTextKeyboardObserver,YHExpressionInputViewDelegate,UITextViewDelegate,YHExpressionAddViewDelegate>{
     BOOL    _toolbarButtonTap; //toolbarBtn被点击
     CGFloat _height_oneRowText;//输入框每一行文字高度
     CGFloat _height_Toolbar;   //当前Toolbar高度
-    NSMutableArray *_toolbarButtonArr;
-    UIButton       *_toolbarButtonSelected;
+    NSMutableArray   *_toolbarButtonArr;
+    UIButton         *_toolbarButtonSelected;
+    CGFloat          _aboveViewH;    //键盘上方视图的高度
+    YHKeyBoardStatus _keyBoardStatus;//键盘状态
+    CGFloat          _diffH;
+    
+    NSDate *_beginRecordDate;
+    NSDate *_endRecordDate;
 }
 
 //表情键盘被添加到的VC 和 父视图
@@ -137,6 +151,10 @@
 @property (nonatomic, strong) YHExpressionAddView   *addView;//"+"视图
 
 @property (nonatomic, weak)id <YHExpressionKeyboardDelegate>delegate;
+
+//其他Data
+@property (nonatomic, assign) CGFloat keyboardH; //键盘高度
+
 @end
 
 @implementation YHExpressionKeyboard
@@ -156,8 +174,18 @@
         _toolbarButtonArr = [NSMutableArray new];
         [self _addNotifations];
         [self _initUI];
+        [self keyboardH];
     }
     return self;
+}
+
+#pragma mark - Getter
+
+
+#pragma mark - Life
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    _aboveViewH = _aboveView.size.height;
 }
 
 #pragma mark - Public
@@ -180,7 +208,7 @@
             [_aboveView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(weakSelf.topToolBar.mas_top);
                 make.left.right.equalTo(weakSelf.superView);
-                make.height.mas_equalTo(SCREEN_HEIGHT-kTopToolbarH-kNaviBarH);
+                make.top.equalTo(weakSelf.superView.mas_top);
             }];
             
         }
@@ -210,14 +238,23 @@
     
 }
 
+//键盘上方视图内容滚动到键盘顶部(Note: 键盘上方视图是scrollView才有效)
+- (void)aboveViewScollToBottom{
+    if (_aboveView && [_aboveView isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scr = (UIScrollView *) _aboveView;
+        [self _scrollToBottom:scr];
+        
+    }
+}
+
 #pragma mark - filePrivate
 - (void)_addNotifations{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardHidden:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardShow:) name:UIKeyboardWillShowNotification object:nil];
+    
 }
 
 - (void)dealloc{
-    DDLog(@"%s",__func__);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -241,20 +278,20 @@
     [_toolbarVioceButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(kToolbarBtnH);
         make.left.equalTo(weakSelf.topToolBar.mas_left).offset(5);
-        make.bottom.equalTo(weakSelf.topToolBar).offset(-5);
+        make.bottom.equalTo(weakSelf.topToolBar).offset(-8);
     }];
     
     [_toolbarEmoticonButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(kToolbarBtnH);
         make.right.equalTo(weakSelf.toolbarExtraButton.mas_left);
-        make.bottom.equalTo(weakSelf.topToolBar).offset(-5);
+        make.bottom.equalTo(weakSelf.topToolBar).offset(-8);
     }];
     
     
     [_toolbarExtraButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(kToolbarBtnH);
         make.right.equalTo(weakSelf.topToolBar.mas_right);
-        make.bottom.equalTo(weakSelf.topToolBar).offset(-5);
+        make.bottom.equalTo(weakSelf.topToolBar).offset(-8);
     }];
     
     
@@ -352,6 +389,7 @@
     _textView.showsVerticalScrollIndicator = YES;
     _textView.alwaysBounceVertical = NO;
     _textView.font = [UIFont systemFontOfSize:14];
+    _textView.returnKeyType = UIReturnKeySend;
     _textView.delegate = self;
     
     [_topToolBar addSubview:_textView];
@@ -369,6 +407,13 @@
     
     [_toolbarPresstoSpeakButton setTitle:@"按住 说话" forState:UIControlStateNormal];
     [_toolbarPresstoSpeakButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
+    
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonDown:) forControlEvents:UIControlEventTouchDown];
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonDragOutside:) forControlEvents:UIControlEventTouchDragOutside];
+    [_toolbarPresstoSpeakButton addTarget:self action:@selector(talkButtonDragInside:) forControlEvents:UIControlEventTouchDragInside];
     
     _toolbarPresstoSpeakButton.layer.cornerRadius =3;
     _toolbarPresstoSpeakButton.layer.borderWidth  = 1;
@@ -418,18 +463,30 @@
 }
 
 
-- (void)_aboveViewScollToBottom{
-    if (_aboveView && [_aboveView isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scr = (UIScrollView *) _aboveView;
-        [self _scrollToBottom:scr];
-        
-    }
-}
-
 - (void)_scrollToBottom:(UIScrollView *)scrollView{
-    CGPoint off = scrollView.contentOffset;
-    off.y = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom;
-    [scrollView setContentOffset:off animated:YES];
+    
+    CGPoint off         = scrollView.contentOffset;
+    CGFloat contentH    = scrollView.contentSize.height;
+    CGFloat scrollViewH = _aboveViewH;
+    CGFloat adjustH;
+    if (_keyBoardStatus == YHKeyBoardStatus_OnlyTopToolBar){
+        adjustH = 0;
+    }else if (_keyBoardStatus == YHKeyBoardStatus_PhysicalKeyB){
+        adjustH = self.keyboardH ;
+    }else{
+        if (_keyboardH == 0) {
+            adjustH = kBotContainerH;
+        }else{
+            adjustH = self.keyboardH - _diffH;
+        }
+    }
+    off.y = contentH - scrollViewH + adjustH + scrollView.contentInset.bottom;
+    if ( off.y < 0 ){
+        return;
+    }
+    
+    [scrollView scrollToBottom];
+    
 }
 
 
@@ -439,7 +496,6 @@
         b.selected = NO;
         [self _setupBtnImage:b];
     }
-    [self _aboveViewScollToBottom];
     return YES;
 }
 
@@ -450,6 +506,11 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@""]) {
         [_textView deleteEmoticon];
+    }
+    if([text isEqualToString:@"\n"]){
+        //发送
+        [self didTapSendBtn];
+        return NO;
     }
     return YES;
 }
@@ -519,15 +580,16 @@
     
 }
 
-- (void)sendBtnDidTap{
+- (void)didTapSendBtn{
     DDLog(@"点击发送,发送文本是：\n%@",_textView.text);
-    if (_delegate && [_delegate respondsToSelector:@selector(sendBtnDidTap:)]) {
-        [_delegate sendBtnDidTap:_textView.text];
+    if (_delegate && [_delegate respondsToSelector:@selector(didTapSendBtn:)]) {
+        [_delegate didTapSendBtn:_textView.text];
     }
     
     //清空输入内容
     self.textView.text = @"";
     [self _textViewChangeText];
+    [self aboveViewScollToBottom];
 }
 
 #pragma mark - @protocol YHExpressionAddViewDelegate
@@ -604,10 +666,7 @@
         [self _hiddenPressToSpeakButton];
     }
     
-    //aboveView滚到底部
-    if(button != _toolbarVioceButton){
-        [self _aboveViewScollToBottom];
-    }
+    
     
     
     if (button == _toolbarVioceButton) {
@@ -639,6 +698,7 @@
             //显示表情
             if (![_textView isFirstResponder]) {
                 [self _showExpressionKeyboard];
+                [self aboveViewScollToBottom];
             }else{
                 [_textView resignFirstResponder];
             }
@@ -655,12 +715,14 @@
             //显示"+"内容
             if (![_textView isFirstResponder]) {
                 [self _showAddView];
+                [self aboveViewScollToBottom];
             }else{
                 [_textView resignFirstResponder];
             }
             
         }
     }
+    
 }
 
 
@@ -669,7 +731,7 @@
  */
 - (void)_onlyShowToolbar{
     WeakSelf
-    
+    _keyBoardStatus = YHKeyBoardStatus_OnlyTopToolBar;
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer).offset(kBotContainerH);
     }];
@@ -724,6 +786,7 @@
  */
 - (void)_showExpressionKeyboard{
     //表情键盘上移，addView下移
+    _keyBoardStatus = YHKeyBoardStatus_ExpressionKeyB;
     WeakSelf
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer);
@@ -746,6 +809,7 @@
  */
 - (void)_showAddView{
     //表情键盘下移，addView上移
+    _keyBoardStatus = YHKeyBoardStatus_Other;
     WeakSelf
     [_inputV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.botContainer).offset(kBotContainerH);
@@ -765,6 +829,56 @@
     btn.selected = !btn.selected;
     
 }
+
+// 说话按钮
+- (void)talkButtonDown:(UIButton *)sender
+{
+    //    DDLog(@"talkButtonDown");
+    if(_delegate && [_delegate respondsToSelector:@selector(didStartRecordingVoice)]){
+        [_delegate didStartRecordingVoice];
+    }
+}
+
+- (void)talkButtonUpInside:(UIButton *)sender
+{
+    //     DDLog(@"talkButtonUpInside");
+    if(_delegate && [_delegate respondsToSelector:@selector(didStopRecordingVoice)]){
+        [_delegate didStopRecordingVoice];
+    }
+}
+
+- (void)talkButtonUpOutside:(UIButton *)sender
+{
+    //     DDLog(@"talkButtonUpOutside");
+    if(_delegate && [_delegate respondsToSelector:@selector(didCancelRecordingVoice)]){
+        [_delegate didCancelRecordingVoice];
+    }
+}
+
+- (void)talkButtonDragOutside:(UIButton *)sender
+{
+    //    DDLog(@"talkButtonDragOutside");
+    if(_delegate && [_delegate respondsToSelector:@selector(didDragInside:)]){
+        [_delegate didDragInside:NO];
+    }
+}
+
+- (void)talkButtonDragInside:(UIButton *)sender
+{
+    //     DDLog(@"talkButtonDragInside");
+    if(_delegate && [_delegate respondsToSelector:@selector(didStopRecordingVoice)]){
+        [_delegate didDragInside:YES];
+    }
+}
+
+- (void)talkButtonTouchCancel:(UIButton *)sender
+{
+    DDLog(@"talkButtonTouchCancel");
+}
+
+
+#pragma mark - Gesture
+
 
 
 #pragma mark - NSNotification
@@ -791,31 +905,41 @@
     
 }
 
+
 - (void)keyBoardShow:(NSNotification*)noti{
+    
+    
     //显示键盘
     WeakSelf
     CGRect endF = [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
+    _keyBoardStatus = YHKeyBoardStatus_PhysicalKeyB;
+    
     if (!_toolbarButtonTap) {
         
         NSTimeInterval duration = [[noti.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-        CGFloat diffH = endF.size.height - kBotContainerH;//高度差
+        _diffH = endF.size.height - kBotContainerH;//高度差
+        _keyboardH = endF.size.height;
+        
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(weakSelf.superView).offset(-diffH);
+            make.bottom.equalTo(weakSelf.superView).offset(-_diffH);
         }];
         [UIView animateWithDuration:duration animations:^{
             [weakSelf.superView layoutIfNeeded];
         }];
         
+        
     }else{
         _toolbarButtonTap = NO;
         
-        CGFloat diffH = endF.size.height - kBotContainerH;//高度差
+        _diffH = endF.size.height - kBotContainerH;//高度差
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(weakSelf.superView).offset(-diffH);
+            make.bottom.equalTo(weakSelf.superView).offset(-_diffH);
             
         }];
         
     }
+    [self aboveViewScollToBottom];
+    
     
 }
 

@@ -12,13 +12,11 @@
 		AC4A14131E514AC400CA7024 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14121E514AC400CA7024 /* ViewController.m */; };
 		AC4A14161E514AC400CA7024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14141E514AC400CA7024 /* Main.storyboard */; };
 		AC4A14181E514AC400CA7024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14171E514AC400CA7024 /* Assets.xcassets */; };
-		AC4A141B1E514AC400CA7024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */; };
 		AC4A14FE1E514AFA00CA7024 /* YHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14251E514AFA00CA7024 /* YHModel.m */; };
 		AC4A14FF1E514AFA00CA7024 /* YHExpressionAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14271E514AFA00CA7024 /* YHExpressionAddView.m */; };
 		AC4A15001E514AFA00CA7024 /* YHExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14291E514AFA00CA7024 /* YHExpressionHelper.m */; };
 		AC4A15011E514AFA00CA7024 /* YHExpressionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A142B1E514AFA00CA7024 /* YHExpressionInputView.m */; };
 		AC4A15021E514AFA00CA7024 /* YHExpressionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A142D1E514AFA00CA7024 /* YHExpressionKeyboard.m */; };
-		AC4A15031E514AFA00CA7024 /* ExpressionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC4A142F1E514AFA00CA7024 /* ExpressionKeyboard.bundle */; };
 		AC4A15041E514AFA00CA7024 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC4A14331E514AFA00CA7024 /* Info.plist */; };
 		AC4A15051E514AFA00CA7024 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14351E514AFA00CA7024 /* MASCompositeConstraint.m */; };
 		AC4A15061E514AFA00CA7024 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A14381E514AFA00CA7024 /* MASConstraint.m */; };
@@ -113,6 +111,16 @@
 		AC4A17691E51B46100CA7024 /* YYTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A17151E51B46100CA7024 /* YYTimer.m */; };
 		AC4A176A1E51B46100CA7024 /* YYTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A17171E51B46100CA7024 /* YYTransaction.m */; };
 		AC4A176B1E51B46100CA7024 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4A17191E51B46100CA7024 /* YYWeakProxy.m */; };
+		AC4B26AC1EF8AF6A009631AC /* UITableView+HYBCacheHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4B26A91EF8AF6A009631AC /* UITableView+HYBCacheHeight.m */; };
+		AC4B26AD1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4B26AB1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.m */; };
+		AC7746ED1EFB948C006EA0EC /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7746EB1EFB948C006EA0EC /* UIBarButtonItem+Custom.m */; };
+		AC7746F01EFB94C5006EA0EC /* ExpressionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC7746EF1EFB94C5006EA0EC /* ExpressionKeyboard.bundle */; };
+		AC8E49621EF7C21900F71AE7 /* CellChatTextLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8E495F1EF7C21900F71AE7 /* CellChatTextLeft.m */; };
+		AC8E49631EF7C21900F71AE7 /* CellChatTextRight.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8E49611EF7C21900F71AE7 /* CellChatTextRight.m */; };
+		AC8E49661EF7C24500F71AE7 /* CellChatBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8E49651EF7C24500F71AE7 /* CellChatBase.m */; };
+		AC8E49691EF7C2A900F71AE7 /* YHChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8E49681EF7C2A900F71AE7 /* YHChatModel.m */; };
+		AC8E496C1EF7C2CC00F71AE7 /* YHUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8E496B1EF7C2CC00F71AE7 /* YHUserInfo.m */; };
+		ACA628DD1EFB75C700CB3347 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA628DC1EFB75C700CB3347 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +132,6 @@
 		AC4A14121E514AC400CA7024 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC4A14151E514AC400CA7024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC4A14171E514AC400CA7024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AC4A141A1E514AC400CA7024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC4A141C1E514AC400CA7024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4A14241E514AFA00CA7024 /* YHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModel.h; sourceTree = "<group>"; };
 		AC4A14251E514AFA00CA7024 /* YHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModel.m; sourceTree = "<group>"; };
@@ -136,7 +143,6 @@
 		AC4A142B1E514AFA00CA7024 /* YHExpressionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHExpressionInputView.m; sourceTree = "<group>"; };
 		AC4A142C1E514AFA00CA7024 /* YHExpressionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHExpressionKeyboard.h; sourceTree = "<group>"; };
 		AC4A142D1E514AFA00CA7024 /* YHExpressionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHExpressionKeyboard.m; sourceTree = "<group>"; };
-		AC4A142F1E514AFA00CA7024 /* ExpressionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ExpressionKeyboard.bundle; sourceTree = "<group>"; };
 		AC4A14331E514AFA00CA7024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4A14341E514AFA00CA7024 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		AC4A14351E514AFA00CA7024 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -329,7 +335,25 @@
 		AC4A17181E51B46100CA7024 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		AC4A17191E51B46100CA7024 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		AC4A171A1E51B46100CA7024 /* YYKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKit.h; sourceTree = "<group>"; };
+		AC4B26A81EF8AF6A009631AC /* UITableView+HYBCacheHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HYBCacheHeight.h"; sourceTree = "<group>"; };
+		AC4B26A91EF8AF6A009631AC /* UITableView+HYBCacheHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HYBCacheHeight.m"; sourceTree = "<group>"; };
+		AC4B26AA1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+HYBMasonryAutoCellHeight.h"; sourceTree = "<group>"; };
+		AC4B26AB1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HYBMasonryAutoCellHeight.m"; sourceTree = "<group>"; };
 		AC61F83B1E5ABFFC00AF48B5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AC7746EA1EFB948C006EA0EC /* UIBarButtonItem+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Custom.h"; sourceTree = "<group>"; };
+		AC7746EB1EFB948C006EA0EC /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
+		AC7746EF1EFB94C5006EA0EC /* ExpressionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ExpressionKeyboard.bundle; sourceTree = "<group>"; };
+		AC8E495E1EF7C21900F71AE7 /* CellChatTextLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatTextLeft.h; sourceTree = "<group>"; };
+		AC8E495F1EF7C21900F71AE7 /* CellChatTextLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellChatTextLeft.m; sourceTree = "<group>"; };
+		AC8E49601EF7C21900F71AE7 /* CellChatTextRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatTextRight.h; sourceTree = "<group>"; };
+		AC8E49611EF7C21900F71AE7 /* CellChatTextRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellChatTextRight.m; sourceTree = "<group>"; };
+		AC8E49641EF7C24500F71AE7 /* CellChatBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatBase.h; sourceTree = "<group>"; };
+		AC8E49651EF7C24500F71AE7 /* CellChatBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellChatBase.m; sourceTree = "<group>"; };
+		AC8E49671EF7C2A900F71AE7 /* YHChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChatModel.h; sourceTree = "<group>"; };
+		AC8E49681EF7C2A900F71AE7 /* YHChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChatModel.m; sourceTree = "<group>"; };
+		AC8E496A1EF7C2CC00F71AE7 /* YHUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfo.h; sourceTree = "<group>"; };
+		AC8E496B1EF7C2CC00F71AE7 /* YHUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfo.m; sourceTree = "<group>"; };
+		ACA628DC1EFB75C700CB3347 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,13 +393,15 @@
 				AC4A140F1E514AC400CA7024 /* AppDelegate.m */,
 				AC4A14111E514AC400CA7024 /* ViewController.h */,
 				AC4A14121E514AC400CA7024 /* ViewController.m */,
+				AC7746EA1EFB948C006EA0EC /* UIBarButtonItem+Custom.h */,
+				AC7746EB1EFB948C006EA0EC /* UIBarButtonItem+Custom.m */,
 				AC61F83B1E5ABFFC00AF48B5 /* PrefixHeader.pch */,
+				AC8E495B1EF7C21900F71AE7 /* Chat */,
 				AC4A14221E514AFA00CA7024 /* Expression */,
-				AC4A142E1E514AFA00CA7024 /* Resource */,
 				AC4A14311E514AFA00CA7024 /* Vendors */,
 				AC4A14141E514AC400CA7024 /* Main.storyboard */,
 				AC4A14171E514AC400CA7024 /* Assets.xcassets */,
-				AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */,
+				ACA628DC1EFB75C700CB3347 /* Launch Screen.storyboard */,
 				AC4A141C1E514AC400CA7024 /* Info.plist */,
 				AC4A140B1E514AC400CA7024 /* Supporting Files */,
 			);
@@ -393,6 +419,7 @@
 		AC4A14221E514AFA00CA7024 /* Expression */ = {
 			isa = PBXGroup;
 			children = (
+				AC7746EE1EFB94C5006EA0EC /* Resource */,
 				AC4A14231E514AFA00CA7024 /* Model */,
 				AC4A14261E514AFA00CA7024 /* YHExpressionAddView.h */,
 				AC4A14271E514AFA00CA7024 /* YHExpressionAddView.m */,
@@ -403,7 +430,8 @@
 				AC4A142C1E514AFA00CA7024 /* YHExpressionKeyboard.h */,
 				AC4A142D1E514AFA00CA7024 /* YHExpressionKeyboard.m */,
 			);
-			path = Expression;
+			name = Expression;
+			path = ../Expression;
 			sourceTree = "<group>";
 		};
 		AC4A14231E514AFA00CA7024 /* Model */ = {
@@ -415,25 +443,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		AC4A142E1E514AFA00CA7024 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				AC4A142F1E514AFA00CA7024 /* ExpressionKeyboard.bundle */,
-				AC4A14301E514AFA00CA7024 /* image */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		AC4A14301E514AFA00CA7024 /* image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
 		AC4A14311E514AFA00CA7024 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC4B26A71EF8AF6A009631AC /* HYBMasonryAutoCellHeight */,
 				AC4A166A1E51B46000CA7024 /* YYKit */,
 				AC4A14321E514AFA00CA7024 /* Masonry */,
 			);
@@ -749,6 +762,58 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		AC4B26A71EF8AF6A009631AC /* HYBMasonryAutoCellHeight */ = {
+			isa = PBXGroup;
+			children = (
+				AC4B26A81EF8AF6A009631AC /* UITableView+HYBCacheHeight.h */,
+				AC4B26A91EF8AF6A009631AC /* UITableView+HYBCacheHeight.m */,
+				AC4B26AA1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.h */,
+				AC4B26AB1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.m */,
+			);
+			path = HYBMasonryAutoCellHeight;
+			sourceTree = "<group>";
+		};
+		AC7746EE1EFB94C5006EA0EC /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AC7746EF1EFB94C5006EA0EC /* ExpressionKeyboard.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		AC8E495B1EF7C21900F71AE7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC8E495C1EF7C21900F71AE7 /* Model */,
+				AC8E495D1EF7C21900F71AE7 /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		AC8E495C1EF7C21900F71AE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC8E496A1EF7C2CC00F71AE7 /* YHUserInfo.h */,
+				AC8E496B1EF7C2CC00F71AE7 /* YHUserInfo.m */,
+				AC8E49671EF7C2A900F71AE7 /* YHChatModel.h */,
+				AC8E49681EF7C2A900F71AE7 /* YHChatModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC8E495D1EF7C21900F71AE7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC8E49641EF7C24500F71AE7 /* CellChatBase.h */,
+				AC8E49651EF7C24500F71AE7 /* CellChatBase.m */,
+				AC8E495E1EF7C21900F71AE7 /* CellChatTextLeft.h */,
+				AC8E495F1EF7C21900F71AE7 /* CellChatTextLeft.m */,
+				AC8E49601EF7C21900F71AE7 /* CellChatTextRight.h */,
+				AC8E49611EF7C21900F71AE7 /* CellChatTextRight.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -780,6 +845,7 @@
 				TargetAttributes = {
 					AC4A14071E514AC400CA7024 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6C6E567289;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -807,10 +873,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC4A15031E514AFA00CA7024 /* ExpressionKeyboard.bundle in Resources */,
-				AC4A141B1E514AC400CA7024 /* LaunchScreen.storyboard in Resources */,
 				AC4A14181E514AC400CA7024 /* Assets.xcassets in Resources */,
+				AC7746F01EFB94C5006EA0EC /* ExpressionKeyboard.bundle in Resources */,
 				AC4A15041E514AFA00CA7024 /* Info.plist in Resources */,
+				ACA628DD1EFB75C700CB3347 /* Launch Screen.storyboard in Resources */,
 				AC4A14161E514AC400CA7024 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,6 +900,8 @@
 				AC4A17301E51B46100CA7024 /* UIDevice+YYAdd.m in Sources */,
 				AC4A17521E51B46100CA7024 /* YYTextLine.m in Sources */,
 				AC4A174F1E51B46100CA7024 /* YYTextInput.m in Sources */,
+				AC7746ED1EFB948C006EA0EC /* UIBarButtonItem+Custom.m in Sources */,
+				AC8E49691EF7C2A900F71AE7 /* YHChatModel.m in Sources */,
 				AC4A14FF1E514AFA00CA7024 /* YHExpressionAddView.m in Sources */,
 				AC4A17321E51B46100CA7024 /* UIGestureRecognizer+YYAdd.m in Sources */,
 				AC4A175A1E51B46100CA7024 /* YYTextParser.m in Sources */,
@@ -855,6 +923,7 @@
 				AC4A17541E51B46100CA7024 /* YYTextSelectionView.m in Sources */,
 				AC4A17501E51B46100CA7024 /* YYTextKeyboardManager.m in Sources */,
 				AC4A17621E51B46100CA7024 /* YYFileHash.m in Sources */,
+				AC8E49621EF7C21900F71AE7 /* CellChatTextLeft.m in Sources */,
 				AC4A15081E514AFA00CA7024 /* MASLayoutConstraint.m in Sources */,
 				AC4A15061E514AFA00CA7024 /* MASConstraint.m in Sources */,
 				AC4A172D1E51B46100CA7024 /* UIBezierPath+YYAdd.m in Sources */,
@@ -871,22 +940,26 @@
 				AC4A17411E51B46100CA7024 /* UIImageView+YYWebImage.m in Sources */,
 				AC4A175F1E51B46100CA7024 /* YYTextView.m in Sources */,
 				AC4A17391E51B46100CA7024 /* YYCache.m in Sources */,
+				AC8E49661EF7C24500F71AE7 /* CellChatBase.m in Sources */,
 				AC4A173F1E51B46100CA7024 /* MKAnnotationView+YYWebImage.m in Sources */,
 				AC4A14101E514AC400CA7024 /* AppDelegate.m in Sources */,
 				AC4A17461E51B46100CA7024 /* YYImageCoder.m in Sources */,
 				AC4A17241E51B46100CA7024 /* NSObject+YYAddForARC.m in Sources */,
 				AC4A17691E51B46100CA7024 /* YYTimer.m in Sources */,
+				AC4B26AD1EF8AF6A009631AC /* UITableViewCell+HYBMasonryAutoCellHeight.m in Sources */,
 				AC4A14FE1E514AFA00CA7024 /* YHModel.m in Sources */,
 				AC4A175E1E51B46100CA7024 /* YYLabel.m in Sources */,
 				AC4A171C1E51B46100CA7024 /* NSBundle+YYAdd.m in Sources */,
 				AC4A172F1E51B46100CA7024 /* UIControl+YYAdd.m in Sources */,
 				AC4A17341E51B46100CA7024 /* UIScreen+YYAdd.m in Sources */,
 				AC4A15001E514AFA00CA7024 /* YHExpressionHelper.m in Sources */,
+				AC8E49631EF7C21900F71AE7 /* CellChatTextRight.m in Sources */,
 				AC4A17641E51B46100CA7024 /* YYKeychain.m in Sources */,
 				AC4A17491E51B46100CA7024 /* YYWebImageOperation.m in Sources */,
 				AC4A176A1E51B46100CA7024 /* YYTransaction.m in Sources */,
 				AC4A171D1E51B46100CA7024 /* NSData+YYAdd.m in Sources */,
 				AC4A17441E51B46100CA7024 /* YYImage.m in Sources */,
+				AC4B26AC1EF8AF6A009631AC /* UITableView+HYBCacheHeight.m in Sources */,
 				AC4A174E1E51B46100CA7024 /* YYTextEffectWindow.m in Sources */,
 				AC4A15071E514AFA00CA7024 /* MASConstraintMaker.m in Sources */,
 				AC4A150E1E514AFA00CA7024 /* ViewController+MASAdditions.m in Sources */,
@@ -901,6 +974,7 @@
 				AC4A172C1E51B46100CA7024 /* UIBarButtonItem+YYAdd.m in Sources */,
 				AC4A17311E51B46100CA7024 /* UIFont+YYAdd.m in Sources */,
 				AC4A17471E51B46100CA7024 /* YYSpriteSheetImage.m in Sources */,
+				AC8E496C1EF7C2CC00F71AE7 /* YHUserInfo.m in Sources */,
 				AC4A140D1E514AC400CA7024 /* main.m in Sources */,
 				AC4A175C1E51B46100CA7024 /* YYTextRunDelegate.m in Sources */,
 				AC4A172E1E51B46100CA7024 /* UIColor+YYAdd.m in Sources */,
@@ -933,14 +1007,6 @@
 				AC4A14151E514AC400CA7024 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AC4A14191E514AC400CA7024 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC4A141A1E514AC400CA7024 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -986,7 +1052,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1028,7 +1094,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1040,8 +1106,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6C6E567289;
 				GCC_PREFIX_HEADER = YHExpressionKeyBoard/PrefixHeader.pch;
 				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1052,8 +1120,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6C6E567289;
 				GCC_PREFIX_HEADER = YHExpressionKeyBoard/PrefixHeader.pch;
 				INFOPLIST_FILE = YHExpressionKeyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = samuelandkevin.YHExpressionKeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";

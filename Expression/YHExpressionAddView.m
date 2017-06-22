@@ -140,9 +140,6 @@
     _pageControl.userInteractionEnabled = NO;
     [self addSubview:_pageControl];
     
-    //kun调试
-//    _collectionView.backgroundColor = [UIColor orangeColor];
-//    _pageControl.backgroundColor = [UIColor purpleColor];
     
 }
 
