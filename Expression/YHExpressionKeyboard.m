@@ -552,7 +552,11 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
             make.height.mas_equalTo(toolbarH);
         }];
         _height_Toolbar = toolbarH;
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(kBotContainerH+toolbarH);
+        }];
     }
+    
     WeakSelf
     [UIView animateWithDuration:DURTAION animations:^{
         [weakSelf.superView layoutIfNeeded];
@@ -878,7 +882,6 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
 
 
 #pragma mark - Gesture
-
 
 
 #pragma mark - NSNotification
